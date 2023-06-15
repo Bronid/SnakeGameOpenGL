@@ -1,3 +1,5 @@
+![image](https://github.com/Bronid/SnakeGameOpenGL/assets/61603558/87384148-1c51-4318-ac3b-a3caa6387f86)
+
 # Table of Contents
 
 * [General info](#general-info)
