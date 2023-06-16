@@ -188,6 +188,8 @@ The `SnakePlayer` class represents a player-controlled snake in the Multiplayer 
 - `Move(Field _field)`
 
   Moves the snake by updating its head and tail positions on the field. It enqueues the current head coordinates to the `TailCoords` queue and updates the `HeadCoords` based on the current direction. The method also checks for collisions with the field boundaries or the snake's own tail. If a collision is detected, the snake is marked as not alive (`Alive = false`) and its state is wiped. If the snake eats food (a block of type `EnumBlockType.Food`), the score is increased, and the `containFood` flag of the field is set to `false`.
+  
+  ![image](https://github.com/Bronid/SnakeGameOpenGL/assets/61603558/27c0a12c-8c82-46e3-9507-91f3b191d34d)
 
 # Functionality
 
