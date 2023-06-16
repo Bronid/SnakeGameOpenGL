@@ -28,8 +28,8 @@ namespace TetrisGameOpenGL.Display
             MULTIPLAYER_MODE = _multiplayerMode;
             DELAY = _delay;
             Field = new Field(GLOBAL_WIDTH, GLOBAL_HEIGHT);
-            Snake = new SnakePlayer(GLOBAL_WIDTH / 2, GLOBAL_HEIGHT / 2, 1, Field, new float[]{ 1.0F, 0.65F, 0}, new float[] { 1.0F, 0.85F, 0 });
-            if (MULTIPLAYER_MODE) Snake2 = new SnakePlayer(GLOBAL_WIDTH / 4, GLOBAL_HEIGHT / 4, 1, Field, new float[] { 0.55F, 0.0F, 1.0F }, new float[] { 0.85F, 0.0F, 1.0F });
+            Snake = new SnakePlayer(GLOBAL_WIDTH / 2, GLOBAL_HEIGHT / 2, 1, Field, new float[]{ 1.0F, 0.65F, 0}, new float[] { 1.0F, 0.85F, 0 }, EnumDirection.Right);
+            if (MULTIPLAYER_MODE) Snake2 = new SnakePlayer(GLOBAL_WIDTH / 4, GLOBAL_HEIGHT / 4, 1, Field, new float[] { 0.55F, 0.0F, 1.0F }, new float[] { 0.85F, 0.0F, 1.0F }, EnumDirection.Left);
             GL.Viewport(0, 0, _width, _height);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
@@ -40,8 +40,8 @@ namespace TetrisGameOpenGL.Display
         protected void Restart()
         {
             Field = new Field(GLOBAL_WIDTH, GLOBAL_HEIGHT);
-            Snake = new SnakePlayer(GLOBAL_WIDTH / 2, GLOBAL_HEIGHT / 2, 1, Field, new float[] { 1.0F, 0.65F, 0 }, new float[] { 1.0F, 0.85F, 0 });
-            if (MULTIPLAYER_MODE) Snake2 = new SnakePlayer(GLOBAL_WIDTH / 4, GLOBAL_HEIGHT / 4, 1, Field, new float[] { 0.55F, 0.0F, 1.0F }, new float[] { 0.85F, 0.0F, 1.0F });
+            Snake = new SnakePlayer(GLOBAL_WIDTH / 2, GLOBAL_HEIGHT / 2, 1, Field, new float[] { 1.0F, 0.65F, 0 }, new float[] { 1.0F, 0.85F, 0 }, EnumDirection.Right);
+            if (MULTIPLAYER_MODE) Snake2 = new SnakePlayer(GLOBAL_WIDTH / 4, GLOBAL_HEIGHT / 4, 1, Field, new float[] { 0.55F, 0.0F, 1.0F }, new float[] { 0.85F, 0.0F, 1.0F }, EnumDirection.Left);
             sw.Restart();
         }
 

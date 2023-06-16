@@ -17,20 +17,38 @@ namespace TetrisGameOpenGL.Snake
         public int Score { get; set; } = 0;
         public float[] TailColor = null;
         public float[] HeadColor = null;
-        public SnakePlayer(int _initX, int _initY, int _initBodyLength, Field _field, float[] tailColor, float[] headColor)
+        public SnakePlayer(int _initX, int _initY, int _initBodyLength, Field _field, float[] tailColor, float[] headColor, EnumDirection enumDirection)
         {
             HeadCoords = new int[2];
             HeadCoords[0] = _initX;
             HeadCoords[1] = _initY;
             TailColor = tailColor;
             HeadColor = headColor;
+            CurrentDirection = enumDirection;
             _field.setToField(new Block(EnumBlockType.Head, HeadColor), _initX, _initY);
             for (int i = _initBodyLength; i >= 0; i--)
             {
-                TailCoords.Enqueue(new int[2] { _initX - i - 1, _initY });
-                _field.setToField(new Block(EnumBlockType.Tail, TailColor), _initX - i - 1, _initY);
+                switch(CurrentDirection)
+                {
+                    case EnumDirection.Up:
+                        TailCoords.Enqueue(new int[2] { _initX, _initY - i - 1});
+                        _field.setToField(new Block(EnumBlockType.Tail, TailColor), _initX, _initY - i - 1);
+                        break;
+                    case EnumDirection.Down:
+                        TailCoords.Enqueue(new int[2] { _initX, _initY + i + 1});
+                        _field.setToField(new Block(EnumBlockType.Tail, TailColor), _initX, _initY + i + 1);
+                        break;
+                    case EnumDirection.Right:
+                        TailCoords.Enqueue(new int[2] { _initX - i - 1, _initY});
+                        _field.setToField(new Block(EnumBlockType.Tail, TailColor), _initX - i - 1, _initY);
+                        break;
+                    case EnumDirection.Left:
+                        TailCoords.Enqueue(new int[2] { _initX + i + 1, _initY});
+                        _field.setToField(new Block(EnumBlockType.Tail, TailColor), _initX + i + 1, _initY);
+                        break;
+                }
             }
-            CurrentDirection = EnumDirection.Right;
+            
         }
 
         public void Wipe()
